@@ -1,0 +1,17 @@
+.env
+.venv/
+.tools/
+__pycache__/
+*.pyc
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+backend/*.egg-info/
+backend/ff_league_hub.egg-info/
+dist/
+node_modules/
+frontend/dist/
+frontend/node_modules/
+logs/
+*.png
+.DS_Store
