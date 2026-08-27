@@ -12,6 +12,7 @@ class HealthResponse(BaseModel):
     espn_ok: bool
     message: str
     auth_required: bool
+    demo_mode: bool = False
 
 
 class LeagueInfo(BaseModel):

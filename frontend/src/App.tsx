@@ -88,7 +88,7 @@ export default function App() {
   }
 
   return (
-    <Layout league={league}>
+    <Layout league={league} demoMode={Boolean(health?.demo_mode)}>
       <Routes>
         <Route path="/" element={<StandingsPage />} />
         <Route path="/matchups" element={<MatchupsPage />} />

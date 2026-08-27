@@ -157,4 +157,5 @@ export type HealthResponse = {
   espn_ok: boolean;
   message: string;
   auth_required: boolean;
+  demo_mode?: boolean;
 };

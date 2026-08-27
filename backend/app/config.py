@@ -16,10 +16,12 @@ class Settings(BaseSettings):
         extra="ignore",
     )
 
-    league_id: int
-    year: int
-    swid: str
-    espn_s2: str
+    # When true, all APIs use a built-in sample league (no ESPN cookies needed).
+    demo_mode: bool = False
+    league_id: int = 0
+    year: int = 2025
+    swid: str = ""
+    espn_s2: str = ""
     hub_password: str = ""
     cache_ttl_seconds: int = 180
     history_start_year: int = 2016

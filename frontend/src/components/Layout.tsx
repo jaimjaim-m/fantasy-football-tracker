@@ -4,9 +4,11 @@ import type { LeagueInfo } from "../types";
 
 export function Layout({
   league,
+  demoMode = false,
   children,
 }: {
   league: LeagueInfo | null;
+  demoMode?: boolean;
   children: React.ReactNode;
 }) {
   const links = [
@@ -23,7 +25,10 @@ export function Layout({
     <div className="app-shell">
       <header className="topbar">
         <div className="brand">
-          <h1>{league?.name || "Fantasy League Hub"}</h1>
+          <h1>
+            {league?.name || "Fantasy League Hub"}
+            {demoMode ? <span className="demo-pill">Demo</span> : null}
+          </h1>
           <p>
             {league
               ? `${league.year} · Week ${league.current_week} · ${league.scoring_summary}`

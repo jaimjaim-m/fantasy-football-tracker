@@ -92,11 +92,18 @@ def health():
         espn_ok=espn_ok,
         message=message,
         auth_required=bool(cfg.hub_password),
+        demo_mode=cfg.demo_mode,
     )
 
 
 def _league_info(league) -> LeagueInfo:
     cfg = settings()
+    summary = (
+        f"{cfg.h2h_win_points} pts per H2H win + {cfg.top_n_points} pt for a top-{cfg.top_n_bonus} "
+        f"weekly score. Division winners lock seeds 1–2."
+    )
+    if cfg.demo_mode:
+        summary = f"DEMO MODE (sample data) · {summary}"
     return LeagueInfo(
         name=league.settings.name,
         year=league.year,
@@ -104,10 +111,7 @@ def _league_info(league) -> LeagueInfo:
         nfl_week=getattr(league, "nfl_week", None),
         team_count=len(league.teams),
         playoff_teams=cfg.playoff_teams,
-        scoring_summary=(
-            f"{cfg.h2h_win_points} pts per H2H win + {cfg.top_n_points} pt for a top-{cfg.top_n_bonus} "
-            f"weekly score. Division winners lock seeds 1–2."
-        ),
+        scoring_summary=summary,
     )
 
 

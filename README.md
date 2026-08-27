@@ -11,6 +11,17 @@ Cloud-friendly rewrite of the 2025 ESPN fantasy tracker: authenticate to ESPN on
 - Structured JSON under `/api/*` and PDF downloads under `/api/export/pdf/{weekly|alltime|sagarin|playoffs}`
 - Optional shared `HUB_PASSWORD` so a public URL is not fully open
 
+## Demo mode (no ESPN login)
+
+Set `DEMO_MODE=true` in `.env` to use a built-in 12-team sample league. Every page, API route, and PDF export works without `SWID` / `ESPN_S2`.
+
+```bash
+# .env
+DEMO_MODE=true
+```
+
+A yellow **Demo** pill appears in the header. Set `DEMO_MODE=false` and paste real cookies when you are ready for live data.
+
 ## Quick start (local)
 
 Requires **Python 3.9+** (3.11+ preferred) and **Node 20+** for the frontend.
