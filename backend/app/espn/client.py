@@ -64,7 +64,10 @@ class LeagueClient:
             raise ESPNAccessError(f"League {self.settings.league_id} was not found for {year}.") from exc
         except Exception as exc:
             message = str(exc).lower()
-            if any(token in message for token in ("unauthorized", "401", "403", "forbidden", "cookie")):
+            # Proxy/network failures are not cookie failures
+            if any(token in message for token in ("proxy", "tunnel", "timed out", "timeout", "connection")):
+                raise ESPNAccessError(f"Could not reach ESPN: {exc}") from exc
+            if any(token in message for token in ("unauthorized", "401", "403", "forbidden", "cookie", "access denied")):
                 raise ESPNAccessError("ESPN cookies appear invalid or expired.") from exc
             raise
 
